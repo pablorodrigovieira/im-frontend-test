@@ -3,8 +3,9 @@ import React from "react";
 import Image from "next/image";
 import { useTheme } from "next-themes";
 import ModeToggle from "@/components/mode-toggle";
+import dynamic from "next/dynamic";
 
-export default function OnboardLayout({ children }: { children: React.ReactNode }) {
+function OnboardLayout({ children }: { children: React.ReactNode }) {
   const { theme } = useTheme();
   return (
     <section className="grid grid-cols-12 md:min-h-screen">
@@ -35,3 +36,5 @@ export default function OnboardLayout({ children }: { children: React.ReactNode 
     </section>
   );
 }
+
+export default dynamic(() => Promise.resolve(OnboardLayout), { ssr: false });
