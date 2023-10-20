@@ -14,7 +14,7 @@ function OnboardLayout({ children }: { children: React.ReactNode }) {
       <header className="flex justify-between max-h-[80px] w-full">
         <div className="md:bg-secondary w-[250px] p-5 flex align-middle justify-center">
           <Image
-            src={theme === "dark" ? "/images/logo.svg" : "/images/logo-dark.svg"}
+            src={theme === "dark" ? "/assets/images/logo.svg" : "/assets/images/logo-dark.svg"}
             alt="Investing Mate logo"
             width="448"
             height="72"
@@ -30,7 +30,7 @@ function OnboardLayout({ children }: { children: React.ReactNode }) {
       <section className="flex flex-grow">
         <aside className="relative p-4 bg-secondary w-[250px] hidden md:p-10 md:block">
           <Image
-            src="/images/footer.svg"
+            src="/assets/images/footer.svg"
             alt="footer art"
             width="448"
             height="72"

@@ -33,24 +33,28 @@ export function useClientTranslation(
   const [cookies, setCookie] = useCookies([cookieName]);
   const ret = useTranslationOrg(ns, options);
   const { i18n } = ret;
+
+  // Move the conditional checks here
   if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
     i18n.changeLanguage(lng);
-  } else {
-    const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
-    useEffect(() => {
-      if (activeLng === i18n.resolvedLanguage) return;
-      setActiveLng(i18n.resolvedLanguage);
-    }, [activeLng, i18n.resolvedLanguage]);
-
-    useEffect(() => {
-      if (!lng || i18n.resolvedLanguage === lng) return;
-      i18n.changeLanguage(lng);
-    }, [lng, i18n]);
-
-    useEffect(() => {
-      if (cookies.i18next === lng) return;
-      setCookie(cookieName, lng, { path: "/" });
-    }, [lng, cookies.i18next]);
   }
+
+  const [activeLng, setActiveLng] = useState(i18n.resolvedLanguage);
+
+  useEffect(() => {
+    if (runsOnServerSide && lng && i18n.resolvedLanguage !== lng) {
+      i18n.changeLanguage(lng);
+    }
+
+    if (activeLng === i18n.resolvedLanguage) return;
+    setActiveLng(i18n.resolvedLanguage);
+
+    if (!lng || i18n.resolvedLanguage === lng) return;
+    i18n.changeLanguage(lng);
+
+    if (cookies.i18next === lng) return;
+    setCookie(cookieName, lng, { path: "/" });
+  }, [activeLng, cookies, i18n, lng, ns, setCookie]);
+
   return ret;
 }
