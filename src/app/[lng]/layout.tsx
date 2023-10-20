@@ -1,9 +1,13 @@
 import React from "react";
 import type { Metadata } from "next";
+import { dir } from "i18next";
 import { Inter } from "next/font/google";
+import "../globals.css";
+
 import { ThemeProvider } from "@/components/theme-provider";
 import OnboardLayout from "@/components/onboard-layout";
-import "./globals.css";
+import { languages } from "@/app/i18n/settings";
+import { RootLayoutProps } from "@/interfaces/app-interfaces";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,9 +16,15 @@ export const metadata: Metadata = {
   description: "Made by Investors for Investors.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export async function generateStaticParams() {
+  return languages.map((lng) => ({ lng }));
+}
+
+export default function RootLayout(props: RootLayoutProps) {
+  const { children, params } = props;
+  const lng = params.lng;
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang={lng} dir={dir(lng)} suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen`}>
         <ThemeProvider attribute="class" defaultTheme="light" disableTransitionOnChange>
           <OnboardLayout>{children}</OnboardLayout>

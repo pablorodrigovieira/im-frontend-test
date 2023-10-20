@@ -1,0 +1,18 @@
+{
+  "welcome_page": {
+    "title": "Bem-vindo(a) ao Investing Mate!",
+    "already_have_account": "Já tem uma conta? "
+  },
+  "sign_up_page": {
+    "title": "Registrar Conta Individual"
+  },
+  "sign_in_page": {
+    "title": "Bem-vindo de volta!",
+    "new_here": "Novo por aqui? "
+  },
+  "buttons": {
+    "sign_in": "Entrar",
+    "create_an_account": "Criar uma conta",
+    "back": "Voltar"
+  }
+}

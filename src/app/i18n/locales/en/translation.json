@@ -1,0 +1,18 @@
+{
+  "welcome_page": {
+    "title": "Welcome to Investing Mate!",
+    "already_have_account": "Already have an account? "
+  },
+  "sign_up_page": {
+    "title": "Register Individual Account"
+  },
+  "sign_in_page": {
+    "title": "Welcome back!",
+    "new_here": "New here? "
+  },
+  "buttons": {
+    "sign_in": "Sign in",
+    "create_an_account": "Create an account",
+    "back": "Back"
+  }
+}
