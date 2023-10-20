@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { PageProps } from "@/interfaces/app-interfaces";
 import { useTranslation } from "@/app/i18n";
-import {ChevronLeft} from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 
 export default async function Page(props: PageProps) {
   const { params } = props;
